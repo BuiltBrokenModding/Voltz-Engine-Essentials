@@ -102,6 +102,10 @@ archivesBaseName = "VoltzEngineEssentials"
 
 repositories {
     maven {
+        name "BuiltBroken"
+        url "http://ci.builtbroken.com/maven/"
+    }
+    maven {
         name "Mobius Repo"
         url "http://mobiusstrip.eu/maven"
     }
@@ -109,23 +113,23 @@ repositories {
         name 'CB Repo'
         url "http://chickenbones.net/maven/"
     }
-    maven { 
-        name 'OC Maven'
-        url = "http://maven.cil.li/" }
     maven {
         name = "ic2"
         url = "http://maven.ic2.player.to/"
     }
+    maven { 
+        name 'OC Maven'
+        url = "http://maven.cil.li/" }
 }
 
 dependencies 
 {
     testCompile 'junit:junit:4.11'
-    compile 'junit:junit:4.11'
     compile "mcp.mobius.waila:Waila:1.5.8a_1.7.10"
     compile "li.cil.oc:OpenComputers:MC1.7.10-1.4.0.+:dev"
-    //compile "net.industrial-craft:industrialcraft-2:2.2.654-experimental:api"
+    compile "dev.builtbroken.voltzengine:VoltzEngine:1.7.10-0.+:deobf-dev"
 }
+
 def getDate() {
     def date = new Date()
     def formattedDate = date.format('yyyyMMddHHmmss')
