@@ -1,12 +1,18 @@
 package com.builtbroken.vee;
 
+import com.builtbroken.mc.core.commands.CommandVE;
 import com.builtbroken.mc.lib.mod.AbstractMod;
 import com.builtbroken.mc.lib.mod.ModCreativeTab;
+import com.builtbroken.vee.commands.CommandPvP;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraft.command.ICommandManager;
+import net.minecraft.command.ServerCommandManager;
 
 /**
  * Created by robert on 2/23/2015.
@@ -64,5 +70,11 @@ public class VEE extends AbstractMod
     public CommonProxy getProxy()
     {
         return proxy;
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event)
+    {
+        CommandVE.INSTANCE.addCommand(new CommandPvP());
     }
 }
