@@ -3,9 +3,7 @@ package com.builtbroken.vee;
 import com.builtbroken.mc.core.commands.CommandVE;
 import com.builtbroken.mc.lib.mod.AbstractMod;
 import com.builtbroken.mc.lib.mod.ModCreativeTab;
-import com.builtbroken.vee.commands.CommandHome;
-import com.builtbroken.vee.commands.CommandPvP;
-import com.builtbroken.vee.commands.CommandSetHome;
+import com.builtbroken.vee.commands.*;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -22,12 +20,16 @@ import net.minecraft.command.ServerCommandManager;
 @Mod(modid = VEE.DOMAIN, name = VEE.NAME, version = VEE.VERSION, dependencies = "required-after:VoltzEngine")
 public class VEE extends AbstractMod
 {
-    /** Name of the channel and mod ID. */
+    /**
+     * Name of the channel and mod ID.
+     */
     public static final String NAME = "Voltz Essentials";
     public static final String DOMAIN = "voltzessentials";
     public static final String PREFIX = DOMAIN + ":";
 
-    /** The version of WatchYourStep. */
+    /**
+     * The version of WatchYourStep.
+     */
     public static final String MAJOR_VERSION = "@MAJOR@";
     public static final String MINOR_VERSION = "@MINOR@";
     public static final String REVISION_VERSION = "@REVIS@";
@@ -81,7 +83,8 @@ public class VEE extends AbstractMod
         ServerCommandManager serverCommandManager = ((ServerCommandManager) commandManager);
         serverCommandManager.registerCommand(new CommandHome());
         serverCommandManager.registerCommand(new CommandSetHome());
-
+        serverCommandManager.registerCommand(new CommandSetSpawn());
+        serverCommandManager.registerCommand(new CommandSpawn());
         CommandVE.INSTANCE.addCommand(new CommandPvP());
     }
 }
