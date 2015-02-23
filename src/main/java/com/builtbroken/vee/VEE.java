@@ -3,7 +3,9 @@ package com.builtbroken.vee;
 import com.builtbroken.mc.core.commands.CommandVE;
 import com.builtbroken.mc.lib.mod.AbstractMod;
 import com.builtbroken.mc.lib.mod.ModCreativeTab;
+import com.builtbroken.vee.commands.CommandHome;
 import com.builtbroken.vee.commands.CommandPvP;
+import com.builtbroken.vee.commands.CommandSetHome;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -75,6 +77,11 @@ public class VEE extends AbstractMod
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event)
     {
+        ICommandManager commandManager = FMLCommonHandler.instance().getMinecraftServerInstance().getCommandManager();
+        ServerCommandManager serverCommandManager = ((ServerCommandManager) commandManager);
+        serverCommandManager.registerCommand(new CommandHome());
+        serverCommandManager.registerCommand(new CommandSetHome());
+
         CommandVE.INSTANCE.addCommand(new CommandPvP());
     }
 }
