@@ -4,6 +4,7 @@ import com.builtbroken.mc.core.commands.CommandVE;
 import com.builtbroken.mc.lib.mod.AbstractMod;
 import com.builtbroken.mc.lib.mod.ModCreativeTab;
 import com.builtbroken.vee.commands.*;
+import com.builtbroken.vee.handlers.PlayerTracker;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -13,6 +14,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * Created by robert on 2/23/2015.
@@ -85,6 +87,10 @@ public class VEE extends AbstractMod
         serverCommandManager.registerCommand(new CommandSetHome());
         serverCommandManager.registerCommand(new CommandSetSpawn());
         serverCommandManager.registerCommand(new CommandSpawn());
+        serverCommandManager.registerCommand(new CommandBack());
         CommandVE.INSTANCE.addCommand(new CommandPvP());
+
+        MinecraftForge.EVENT_BUS.register(new PlayerTracker());
+
     }
 }
