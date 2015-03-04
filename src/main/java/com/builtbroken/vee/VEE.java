@@ -49,7 +49,7 @@ public class VEE extends AbstractMod
 
     public VEE()
     {
-        super(DOMAIN);
+        super(DOMAIN, "VE-Essentials");
     }
 
     @Mod.EventHandler
