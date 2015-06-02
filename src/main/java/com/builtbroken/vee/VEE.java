@@ -45,7 +45,7 @@ public class VEE extends AbstractMod
     @SidedProxy(clientSide = "com.builtbroken.vee.ClientProxy", serverSide = "com.builtbroken.vee.CommonProxy")
     public static CommonProxy proxy;
 
-    public static ModCreativeTab CREATIVE_TAB;
+   // public static ModCreativeTab CREATIVE_TAB;
 
     public VEE()
     {
@@ -56,8 +56,8 @@ public class VEE extends AbstractMod
     public void preInit(FMLPreInitializationEvent event)
     {
         super.preInit(event);
-        CREATIVE_TAB = new ModCreativeTab("vee");
-        getManager().setTab(CREATIVE_TAB);
+        //CREATIVE_TAB = new ModCreativeTab("vee");
+       // getManager().setTab(CREATIVE_TAB);
     }
 
     @Mod.EventHandler
