@@ -81,18 +81,11 @@ public class LoggingDatabase
         stmt.close();
     }
 
-    public void addStock(String stockSymbol, String stockDesc) throws SQLException, IOException, ClassNotFoundException
-    {
-        Statement stmt = con.createStatement();
-        stmt.executeUpdate("INSERT INTO Stocks VALUES ('" + stockSymbol + "','" + stockDesc + "')");
-        stmt.close();
-    }
-
     // delete a record from from the Stocks table
-    private void delStock(String stockSymbol) throws SQLException, IOException, ClassNotFoundException
+    private void delPlayer(String username) throws SQLException, IOException, ClassNotFoundException
     {
         Statement stmt = con.createStatement();
-        stmt.executeUpdate("DELETE FROM Stocks WHERE symbol = '" + stockSymbol + "'");
+        stmt.executeUpdate("DELETE FROM Players WHERE symbol = '" + username + "'");
         stmt.close();
     }
 }
