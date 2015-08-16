@@ -1,5 +1,7 @@
 package com.builtbroken.vee.logging.block;
 
+import java.sql.SQLException;
+
 /**
  * Created by Cow Pi on 7/28/2015.
  */
@@ -9,6 +11,10 @@ public class LoggingWritingThread extends Thread
     //TODO if a call fails roll back the call and try 2 more times
     //TODO if a call fails 3 times print to console and move on
     LoggingDatabase database;
+    String ip;
+    String port;
+    String username;
+    String password;
 
     @Override
     public void run()
@@ -16,7 +22,18 @@ public class LoggingWritingThread extends Thread
         super.run();
         if(database == null)
         {
-            database = new LoggingDatabase();
+            try
+            {
+                database = new LoggingDatabase(ip, port, username, password);
+            }
+            catch (ClassNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
             //TODO open connection to database
             //TODO que a clean database for later
             //TODO track how long the database has been open
