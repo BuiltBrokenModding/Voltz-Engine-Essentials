@@ -27,26 +27,24 @@ public class CommandSETHP extends SubCommandWithName {
 
     @Override
     public boolean handleEntityPlayerCommand(EntityPlayer player, String user, String[] args) {
-        if (args != null && args.length == 1){
+        if (args != null && args.length == 1) {
             return handleConsoleCommand(player, user, args);
-        }
-        else
-            if (player != null) {
-                try {
-                    float hp = Float.parseFloat(user);
-                    float prev_hp = player.getHealth();
-                    player.setHealth(hp);
-                    if (hp > prev_hp) {
-                        player.addChatComponentMessage(new ChatComponentText("You have been blessed by the gods."));
-                    } else if (hp < prev_hp)
-                        player.addChatComponentMessage(new ChatComponentText("You have smiten by the gods."));
-                    return true;
+        } else if (player != null) {
+            try {
+                float hp = Float.parseFloat(user);
+                float prev_hp = player.getHealth();
+                player.setHealth(hp);
+                if (hp > prev_hp) {
+                    player.addChatComponentMessage(new ChatComponentText("You have been blessed by the gods."));
+                } else if (hp < prev_hp)
+                    player.addChatComponentMessage(new ChatComponentText("You have smiten by the gods."));
+                return true;
 
-                } catch (NumberFormatException e) {
-                    player.addChatMessage(new ChatComponentText("You need to use a number for the health value"));
-                    return true;
-                }
+            } catch (NumberFormatException e) {
+                player.addChatMessage(new ChatComponentText("You need to use a number for the health value"));
+                return true;
             }
+        }
         return true;
     }
 
@@ -74,11 +72,11 @@ public class CommandSETHP extends SubCommandWithName {
 
         }
     }
+
     @Override
-    public List addTabCompletionOptions(ICommandSender sender, String[] args)
-        {
-            if (args != null && args.length == 1)
-                return getListOfStringsMatchingLastWord(args, this.playersOnlineByUsername());
-            return null;
-        }
+    public List addTabCompletionOptions(ICommandSender sender, String[] args) {
+        if (args != null && args.length == 1)
+            return getListOfStringsMatchingLastWord(args, this.playersOnlineByUsername());
+        return null;
+    }
 }
