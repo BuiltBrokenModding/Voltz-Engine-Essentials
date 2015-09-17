@@ -2,7 +2,6 @@ package com.builtbroken.vee;
 
 import com.builtbroken.mc.core.commands.CommandVE;
 import com.builtbroken.mc.lib.mod.AbstractMod;
-import com.builtbroken.mc.lib.mod.ModCreativeTab;
 import com.builtbroken.vee.commands.*;
 import com.builtbroken.vee.handlers.PlayerTracker;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -90,6 +89,7 @@ public class VEE extends AbstractMod
         serverCommandManager.registerCommand(new CommandBack());
         serverCommandManager.registerCommand(new CommandSETHP());
         serverCommandManager.registerCommand(new CommandSlay());
+        serverCommandManager.registerCommand(new CommandBroadcast());
         CommandVE.INSTANCE.addCommand(new CommandPvP());
 
         MinecraftForge.EVENT_BUS.register(new PlayerTracker());
