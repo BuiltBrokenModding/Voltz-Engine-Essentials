@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * /sethp snow 20
- * Created by snow on 9/16/2015.
+ * Created by snow/Kolatra on 9/16/2015.
  */
 
 public class CommandSETHP extends SubCommandWithName {
