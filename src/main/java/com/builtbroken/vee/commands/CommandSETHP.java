@@ -1,5 +1,6 @@
 package com.builtbroken.vee.commands;
 
+import com.builtbroken.jlib.lang.TextColor;
 import com.builtbroken.mc.core.commands.ext.SubCommandWithName;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,7 +42,7 @@ public class CommandSETHP extends SubCommandWithName {
                 return true;
 
             } catch (NumberFormatException e) {
-                player.addChatMessage(new ChatComponentText("You need to use a number for the health value"));
+                player.addChatMessage(new ChatComponentText(TextColor.DARKRED.getColorString() + "[Error] " + (TextColor.WHITE.getColorString() +"You need to use a number for the health value")));
                 return true;
             }
         }
@@ -63,11 +64,11 @@ public class CommandSETHP extends SubCommandWithName {
                 return true;
 
             } catch (NumberFormatException e) {
-                sender.addChatMessage(new ChatComponentText("You need to use a number for the health value"));
+                player.addChatMessage(new ChatComponentText(TextColor.DARKRED.getColorString() + "[Error] " + (TextColor.WHITE.getColorString() +"You need to use a number for the health value")));
                 return true;
             }
         } else {
-            player.addChatComponentMessage(new ChatComponentText("Player is not online, or username is incorrect"));
+            player.addChatMessage(new ChatComponentText(TextColor.DARKRED.getColorString() + "[Error] " + (TextColor.WHITE.getColorString() +"Player is not online, or username is incorrect")));
             return true;
 
         }
