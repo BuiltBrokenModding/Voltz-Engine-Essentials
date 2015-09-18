@@ -7,10 +7,12 @@ import com.builtbroken.mc.prefab.commands.AbstractCommand;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -57,19 +59,29 @@ public class CommandFalconPunch extends AbstractCommand
     }
 
     @SubscribeEvent
-    public void onPlayerClick(EntityInteractEvent event)
+    public void onPlayerClick(LivingAttackEvent event)
     {
-        if (event.target == null)
+        if (event.source instanceof EntityDamageSource && event.source.getEntity() instanceof EntityPlayer)
         {
-            Pos pos = new EulerAngle(event.entityPlayer.cameraYaw, event.entityPlayer.cameraPitch).toVector().multiply(10);
-            event.target.motionX += pos.x();
-            event.target.motionY += pos.y();
-            event.target.motionZ += pos.z();
-            event.entityPlayer.addChatComponentMessage(new ChatComponentText("Falcon Punch!!!"));
-            if (event.target instanceof EntityPlayer)
+            EntityPlayer player = (EntityPlayer) event.source.getEntity();
+            Entity target = event.entity;
+
+            if (poweredPlayers.containsKey(player.getCommandSenderName()))
             {
-                //TODO if player's near have client side mod installed play audio clip
-                ((EntityPlayer) event.target).addChatComponentMessage(new ChatComponentText("Falcon Punch!!!"));
+                poweredPlayers.remove(player.getCommandSenderName());
+                Pos pos = new EulerAngle(-player.cameraYaw + 90, player.cameraPitch).toVector().multiply(10);
+                target.addVelocity(pos.x(), pos.y() + .3, pos.z());
+                player.addChatComponentMessage(new ChatComponentText("Falcon Punch!!!"));
+                if (target instanceof EntityPlayer)
+                {
+                    //TODO if player's near have client side mod installed play audio clip
+                    ((EntityPlayer) target).addChatComponentMessage(new ChatComponentText("Falcon Punch!!!"));
+                }
+
+                if (event.isCancelable())
+                {
+                    event.setCanceled(true);
+                }
             }
         }
     }
