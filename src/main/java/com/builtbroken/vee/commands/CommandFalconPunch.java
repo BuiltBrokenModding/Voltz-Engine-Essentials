@@ -14,6 +14,7 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @see <a href="https://github.com/BuiltBrokenModding/VoltzEngine/blob/development/license.md">License</a> for what you can and can't do with the code.
@@ -60,7 +61,16 @@ public class CommandFalconPunch extends AbstractCommand
     {
         if (event.target == null)
         {
-            Pos pos = new EulerAngle(event.entityPlayer.cameraYaw, event.entityPlayer.cameraPitch).toVector();
+            Pos pos = new EulerAngle(event.entityPlayer.cameraYaw, event.entityPlayer.cameraPitch).toVector().multiply(10);
+            event.target.motionX += pos.x();
+            event.target.motionY += pos.y();
+            event.target.motionZ += pos.z();
+            event.entityPlayer.addChatComponentMessage(new ChatComponentText("Falcon Punch!!!"));
+            if (event.target instanceof EntityPlayer)
+            {
+                //TODO if player's near have client side mod installed play audio clip
+                ((EntityPlayer) event.target).addChatComponentMessage(new ChatComponentText("Falcon Punch!!!"));
+            }
         }
     }
 
@@ -69,7 +79,30 @@ public class CommandFalconPunch extends AbstractCommand
     {
         if (event.world.provider.dimensionId == 0)
         {
-
+            if (poweredPlayers.size() == 0)
+            {
+                addTimes.clear();
+                MinecraftForge.EVENT_BUS.unregister(this);
+                FMLCommonHandler.instance().bus().unregister(this);
+            }
+            else
+            {
+                Iterator<String> it = poweredPlayers.keySet().iterator();
+                while (it.hasNext())
+                {
+                    String username = it.next();
+                    if (!addTimes.containsKey(username))
+                    {
+                        it.remove();
+                        addTimes.remove(username);
+                    }
+                    else if ((System.currentTimeMillis() - addTimes.get(username)) > 25000)
+                    {
+                        it.remove();
+                        addTimes.remove(username);
+                    }
+                }
+            }
         }
     }
 }

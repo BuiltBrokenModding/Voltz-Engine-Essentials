@@ -44,7 +44,7 @@ public class VEE extends AbstractMod
     @SidedProxy(clientSide = "com.builtbroken.vee.ClientProxy", serverSide = "com.builtbroken.vee.CommonProxy")
     public static CommonProxy proxy;
 
-   // public static ModCreativeTab CREATIVE_TAB;
+    // public static ModCreativeTab CREATIVE_TAB;
 
     public VEE()
     {
@@ -56,7 +56,7 @@ public class VEE extends AbstractMod
     {
         super.preInit(event);
         //CREATIVE_TAB = new ModCreativeTab("vee");
-       // getManager().setTab(CREATIVE_TAB);
+        // getManager().setTab(CREATIVE_TAB);
     }
 
     @Mod.EventHandler
@@ -94,6 +94,7 @@ public class VEE extends AbstractMod
         serverCommandManager.registerCommand(new CommandFJoin());
         serverCommandManager.registerCommand(new CommandCompass());
         serverCommandManager.registerCommand(new CommandMEM());
+        serverCommandManager.registerCommand(new CommandFalconPunch());
         CommandVE.INSTANCE.addCommand(new CommandPvP());
 
         MinecraftForge.EVENT_BUS.register(new PlayerTracker());
