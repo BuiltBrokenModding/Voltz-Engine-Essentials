@@ -1,7 +1,6 @@
 package com.builtbroken.vee.commands;
 
 import com.builtbroken.jlib.lang.TextColor;
-import com.builtbroken.mc.lib.transform.rotation.EulerAngle;
 import com.builtbroken.mc.lib.transform.vector.Pos;
 import com.builtbroken.mc.prefab.commands.AbstractCommand;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -69,7 +68,7 @@ public class CommandFalconPunch extends AbstractCommand
             if (poweredPlayers.containsKey(player.getCommandSenderName()))
             {
                 poweredPlayers.remove(player.getCommandSenderName());
-                Pos pos = new EulerAngle(-player.cameraYaw + 90, player.cameraPitch).toVector().multiply(10);
+                Pos pos = new Pos(target).subtract(new Pos(player)).normalize();
                 target.addVelocity(pos.x(), pos.y() + .3, pos.z());
                 player.addChatComponentMessage(new ChatComponentText("Falcon Punch!!!"));
                 if (target instanceof EntityPlayer)
