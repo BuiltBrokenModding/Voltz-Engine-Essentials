@@ -93,6 +93,7 @@ public class VEE extends AbstractMod
         serverCommandManager.registerCommand(new CommandFLeave());
         serverCommandManager.registerCommand(new CommandFJoin());
         serverCommandManager.registerCommand(new CommandCompass());
+        serverCommandManager.registerCommand(new CommandMEM());
         CommandVE.INSTANCE.addCommand(new CommandPvP());
 
         MinecraftForge.EVENT_BUS.register(new PlayerTracker());
