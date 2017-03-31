@@ -1,8 +1,8 @@
 package com.builtbroken.vee.commands;
 
 import com.builtbroken.jlib.lang.TextColor;
-import com.builtbroken.mc.lib.transform.vector.Pos;
-import com.builtbroken.mc.prefab.commands.AbstractCommand;
+import com.builtbroken.mc.imp.transform.vector.Pos;
+import com.builtbroken.mc.core.commands.prefab.AbstractCommand;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;

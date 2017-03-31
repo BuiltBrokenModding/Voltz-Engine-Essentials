@@ -1,7 +1,7 @@
 package com.builtbroken.vee.commands;
 
 import com.builtbroken.jlib.lang.TextColor;
-import com.builtbroken.mc.prefab.commands.AbstractCommand;
+import com.builtbroken.mc.core.commands.prefab.AbstractCommand;
 import net.minecraft.command.ICommandSender;
 
 /**

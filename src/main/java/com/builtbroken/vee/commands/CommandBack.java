@@ -1,7 +1,7 @@
 package com.builtbroken.vee.commands;
 
-import com.builtbroken.mc.lib.transform.vector.Location;
-import com.builtbroken.mc.prefab.commands.AbstractCommand;
+import com.builtbroken.mc.imp.transform.vector.Location;
+import com.builtbroken.mc.core.commands.prefab.AbstractCommand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
