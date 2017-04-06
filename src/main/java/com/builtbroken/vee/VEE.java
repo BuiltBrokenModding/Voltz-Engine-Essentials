@@ -19,7 +19,7 @@ import net.minecraftforge.common.MinecraftForge;
  * Plugin for Voltz Engine to add a lot of commands that are normally used in Bukkit
  * Created by robert on 2/23/2015.
  */
-@Mod(modid = VEE.DOMAIN, name = VEE.NAME, version = VEE.VERSION, dependencies = "required-after:VoltzEngine", acceptableRemoteVersions = "*")
+@Mod(modid = VEE.DOMAIN, name = VEE.NAME, version = VEE.VERSION, dependencies = "required-after:voltzengine", acceptableRemoteVersions = "*")
 public class VEE extends AbstractMod
 {
     /**
