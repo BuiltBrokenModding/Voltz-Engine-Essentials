@@ -2,7 +2,7 @@ package com.builtbroken.vee.commands;
 
 import com.builtbroken.jlib.lang.TextColor;
 import com.builtbroken.mc.lib.helper.MathUtility;
-import com.builtbroken.mc.prefab.commands.AbstractCommand;
+import com.builtbroken.mc.core.commands.prefab.AbstractCommand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.util.ForgeDirection;
